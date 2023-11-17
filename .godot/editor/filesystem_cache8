@@ -1,0 +1,10 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1700183724
+icon.svg::CompressedTexture2D::2511312294251539358::1700075523::1700075534::1::::<><>::
+lightSaber_comp2.blend::PackedScene::7302132026070207577::1700183724::1700183726::1::::<><>::
+lightSaber_comp.blend::PackedScene::9018851941375918113::1700180552::1700180886::1::::<><>::
+player.tscn::PackedScene::9182964417042161338::1700183100::0::1::::<><>::
+root.tscn::PackedScene::3418556968832556007::1700180866::0::1::::<><>::
+testsaber.tscn::PackedScene::7549376714836568238::1700183645::0::1::::<><>::uid://d1q2f56ge5qyb::::res://lightSaber_comp.blend
+::res://textures/::1700181953
+metal-texture.jpg::CompressedTexture2D::1428235746110703334::1700180882::1700181953::1::::<><>::

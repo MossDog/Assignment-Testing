@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://box8esxvqj1rv"]
+
+[ext_resource type="PackedScene" uid="uid://bk33msguulwe6" path="res://Platform.tscn" id="1_svo5y"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7ph5b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhdr8"]
+albedo_color = Color(0.321569, 0.321569, 0.321569, 1)
+metallic = 1.0
+roughness = 0.66
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nm3xm"]
+
+[sub_resource type="Curve3D" id="Curve3D_su6dn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.470583, 0, 6.54062, 0, 0, 10, -0.802289, 0, -0.0214481, 6.12365, 0, -0.270094, 8, 0, 16, -1.20353, 0, 4.38346, 1.11636, 0, -4.43212, 16, 0, 10, 0, 0, 0, -0.117903, 0, -8.08878, 16, 0, -16, 0, 0, 0, 0, 0, 0, 8, 0, -24, 0, 0, 0, 0, 0, 0, -8, 0, -24),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40y0b"]
+size = Vector3(1, 8, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7cin"]
+
+[node name="Root" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_7ph5b")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhdr8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
+shape = SubResource("BoxShape3D_nm3xm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 53.8194, 0)
+light_color = Color(1, 0.894118, 0.741176, 1)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_su6dn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37108e-08, 0, 0.999987, 0, 1, 0, -0.999987, 0, -4.37108e-08, -8, 0, -24)
+progress = 87.2483
+
+[node name="Platform" parent="Path3D/PathFollow3D" instance=ExtResource("1_svo5y")]
+transform = Transform3D(-1.00001, 0, 8.74233e-08, 0, 1, 0, -8.74233e-08, 0, -1.00001, 0, 3, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -4.92293)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_40y0b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 8, 0, 0, 0, 24, 0, 0, 0)
+mesh = SubResource("BoxMesh_p7cin")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.55208, 4, -16.401)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_40y0b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 8, 0, 0, 0, 24, 0, 0, 0)
+mesh = SubResource("BoxMesh_p7cin")

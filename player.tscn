@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d33kc2e0rnpda"]
+
+[ext_resource type="PackedScene" uid="uid://ujg1phph4036" path="res://Lightsaber.tscn" id="1_ssdyg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8flc6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3gfhv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxi43"]
+albedo_color = Color(0, 0.815686, 1, 1)
+metallic = 0.41
+roughness = 0.33
+rim_enabled = true
+rim_tint = 0.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_8flc6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_3gfhv")
+surface_material_override/0 = SubResource("StandardMaterial3D_dxi43")
+
+[node name="Node3D" parent="CharacterBody3D" instance=ExtResource("1_ssdyg")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.545, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0, 4.39004, -6.11347)
